@@ -63,7 +63,7 @@ logging.info('Nodes with odd degree: \n %s', nodes_with_odd_degree)
 
 # Compute all pairs of odd degree nodes
 odd_node_pairs = list(itertools.combinations(nodes_with_odd_degree, 2))
-print(odd_node_pairs)
+# print(odd_node_pairs)
 
 def get_shortest_paths_distances(graph, pairs, edge_weight_name):
     distances = {}
@@ -75,7 +75,7 @@ def get_shortest_paths_distances(graph, pairs, edge_weight_name):
 
 # Compute shortest paths. Return a dictionary with node pairs keys and a single value equal to the shortest path distance.
 odd_node_pairs_shortest_paths = get_shortest_paths_distances(G, odd_node_pairs, 'distance')
-print(dict(odd_node_pairs_shortest_paths.items()))
+# print(dict(odd_node_pairs_shortest_paths.items()))
 logging.info("Min distance pairs: \n %s", pd.DataFrame({'paths': list(dict(odd_node_pairs_shortest_paths.items()).keys()), 'distances': list(dict(odd_node_pairs_shortest_paths.items()).values())}))
 
 # Graphing the complete graph for all odd nodes
@@ -91,10 +91,10 @@ g_odd_complete = create_complete_graph(odd_node_pairs_shortest_paths, flip_weigh
 ####### Step 5: Find the set of odd node pairs whose combined sum is the smallest #######
 
 odd_matching_dupes = nx.algorithms.max_weight_matching(g_odd_complete, True)
-print('Number of edges in matching: {}'.format(len(odd_matching_dupes)))
+# print('Number of edges in matching: {}'.format(len(odd_matching_dupes)))
 
 odd_matching = list(pd.unique([tuple(sorted([k, v])) for k, v in dict(odd_matching_dupes).items()]))
-print(odd_matching)
+# print(odd_matching)
 
 g_odd_complete_min_edges = nx.Graph(odd_matching)
 
