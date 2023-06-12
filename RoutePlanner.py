@@ -127,7 +127,7 @@ def create_eulerian_circuit(graph_augmented, graph_original, starting_node=None)
     return euler_circuit
 
 euler_circuit = create_eulerian_circuit(g_aug, G, 'A')
-logging.info(euler_circuit)
+logging.info("Optimal Route Planning Path: \n %s", euler_circuit)
 
 # Plotting all the graphs together
 plt.figure(1)
